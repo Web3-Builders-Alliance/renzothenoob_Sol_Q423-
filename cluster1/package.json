@@ -1,0 +1,23 @@
+{
+  "name": "funcgibe_mont_token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:fungible_mint_token": "npx ts-node ./fungible_mint_token/index.ts",
+    "start:spl_mint": "npx ts-node ./fungible_mint_token/spl_mint.ts",
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/spl-token": "^0.3.9",
+    "@solana/web3.js": "^1.87.6",
+    "bs58": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
