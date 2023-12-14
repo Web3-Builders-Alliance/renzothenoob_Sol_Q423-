@@ -1,11 +1,22 @@
-import { PublicKey } from "@solana/web3.js";
-import { getOrCreateAssociatedTokenAccount, mintTo } from "@solana/spl-token";
+import {
+  createMint,
+  getOrCreateAssociatedTokenAccount,
+  mintTo,
+} from "@solana/spl-token";
 import { CONNECTION, WBA_KEYPAIR } from "../config";
-
-const mint = new PublicKey("3pmrtQL44upDqDhjZCkW7nkLrc4ihaiZTA3GohNsTeKJ");
 
 (async () => {
   try {
+    const mint = await createMint(
+      CONNECTION,
+      WBA_KEYPAIR,
+      WBA_KEYPAIR.publicKey,
+      WBA_KEYPAIR.publicKey,
+      6
+    );
+
+    console.log(mint.toString());
+
     const ata = await getOrCreateAssociatedTokenAccount(
       CONNECTION,
       WBA_KEYPAIR,

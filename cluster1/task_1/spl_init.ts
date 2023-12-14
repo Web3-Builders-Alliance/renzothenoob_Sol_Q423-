@@ -1,25 +1,13 @@
-import {
-  Keypair,
-  Connection,
-  Commitment,
-  clusterApiUrl,
-} from "@solana/web3.js";
 import { createMint } from "@solana/spl-token";
-import base58 from "bs58";
-import { PRIVATE_KEY } from "../env";
-
-const keypair = Keypair.fromSecretKey(base58.decode(PRIVATE_KEY));
-
-const commitment: Commitment = "confirmed";
-const connection = new Connection(clusterApiUrl("devnet"), commitment);
+import { CONNECTION, WBA_KEYPAIR } from "../config";
 
 (async () => {
   try {
     const mint = await createMint(
-      connection,
-      keypair,
-      keypair.publicKey,
-      keypair.publicKey,
+      CONNECTION,
+      WBA_KEYPAIR,
+      WBA_KEYPAIR.publicKey,
+      WBA_KEYPAIR.publicKey,
       6
     );
 
