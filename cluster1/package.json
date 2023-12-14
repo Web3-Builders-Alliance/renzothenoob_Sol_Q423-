@@ -17,6 +17,7 @@
     "start:task_3": "npx ts-node ./task_3/main.ts",
     "start:vault_init": "npx ts-node ./vault/vault_init.ts",
     "start:vault_deposit": "npx ts-node ./vault/vault_deposit.ts",
+    "start:vault_withdraw": "npx ts-node ./vault/vault_withdraw.ts",
     "build": "npx tsc"
   },
   "keywords": [],

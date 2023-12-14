@@ -1,4 +1,4 @@
-import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { Program, BN } from "@coral-xyz/anchor";
 import { WbaVault, WbaVaultID, WbaVaultIDL } from "../programs/vault";
 import { ANCHOR_PROVIDER, WBA_KEYPAIR } from "../config";
@@ -24,7 +24,7 @@ const [vaultKey, _bump2] = PublicKey.findProgramAddressSync(
 (async () => {
   try {
     const signature = await program.methods
-      .deposit(new BN(LAMPORTS_PER_SOL / 1))
+      .withdraw(new BN(LAMPORTS_PER_SOL / 1))
       .accounts({
         owner: WBA_KEYPAIR.publicKey,
         vault: vaultKey,
@@ -35,7 +35,7 @@ const [vaultKey, _bump2] = PublicKey.findProgramAddressSync(
       .signers([WBA_KEYPAIR])
       .rpc();
     console.log(
-      `Deposit success! Check out your TX here:\n\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`
+      `Withdraw success! Check out your TX here:\n\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`
     );
   } catch (e) {
     console.error(`Oops, something went wrong: ${e}`);
