@@ -1,17 +1,5 @@
-import {
-  Connection,
-  Keypair,
-  SystemProgram,
-  PublicKey,
-  Commitment,
-} from "@solana/web3.js";
-import {
-  Program,
-  Wallet,
-  AnchorProvider,
-  Address,
-  BN,
-} from "@coral-xyz/anchor";
+import { PublicKey } from "@solana/web3.js";
+import { Program, BN } from "@coral-xyz/anchor";
 import { WbaVault, WbaVaultID, WbaVaultIDL } from "../programs/vault";
 import { ANCHOR_PROVIDER, WBA_KEYPAIR } from "../config";
 
@@ -52,33 +40,3 @@ const [vaultKey, _bump2] = PublicKey.findProgramAddressSync(
     console.error(`Oops, something went wrong: ${e}`);
   }
 })();
-//  [
-//         {
-//           name: "owner";
-//           isMut: true;
-//           isSigner: true;
-//         },
-//         {
-//           name: "vaultState";
-//           isMut: true;
-//           isSigner: false;
-//           relations: ["owner"];
-//         },
-//         {
-//           name: "vaultAuth";
-//           isMut: false;
-//           isSigner: false;
-//           pda: {
-//             seeds: [
-//               {
-//                 kind: "const";
-//                 type: "string";
-//                 value: "auth";
-//               },
-//               {
-//                 kind: "account";
-//                 type: "publicKey";
-//                 account: "Vault";
-//                 path: "vault_state";
-//               }
-//             ];
