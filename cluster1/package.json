@@ -20,6 +20,7 @@
     "start:vault_withdraw": "npx ts-node ./vault/vault_withdraw.ts",
     "start:vault_deposit_spl": "npx ts-node ./vault/vault_deposit_spl.ts",
     "start:vault_withdraw_spl": "npx ts-node ./vault/vault_withdraw_spl.ts",
+    "start:vault_deposit_nft": "npx ts-node ./vault/vault_deposit_nft.ts",
     "build": "npx tsc"
   },
   "keywords": [],
