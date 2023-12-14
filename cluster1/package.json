@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:fungible_mint_token": "npx ts-node ./fungible_mint_token/index.ts",
-    "start:spl_mint": "npx ts-node ./fungible_mint_token/spl_mint.ts",
+    "start:spl_init": "npx ts-node ./task_1/spl_init.ts",
+    "start:spl_mint": "npx ts-node ./task_1/spl_mint.ts",
     "start:nft_image": "npx ts-node ./rug/nft_image.ts",
     "start:nft_metadata": "npx ts-node ./rug/nft_metadata.ts",
     "start:nft_mint": "npx ts-node ./rug/nft_mint.ts",
