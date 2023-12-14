@@ -16,6 +16,7 @@
     "start:nft_mint": "npx ts-node ./task_3/nft_mint.ts",
     "start:task_3": "npx ts-node ./task_3/main.ts",
     "start:vault_init": "npx ts-node ./vault/vault_init.ts",
+    "start:vault_deposit": "npx ts-node ./vault/vault_deposit.ts",
     "build": "npx tsc"
   },
   "keywords": [],
