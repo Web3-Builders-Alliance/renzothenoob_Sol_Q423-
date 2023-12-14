@@ -1,21 +1,11 @@
-import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
-import {
-  createGenericFile,
-  createSignerFromKeypair,
-  signerIdentity,
-} from "@metaplex-foundation/umi";
+import { createGenericFile, signerIdentity } from "@metaplex-foundation/umi";
 import { createBundlrUploader } from "@metaplex-foundation/umi-uploader-bundlr";
 import { readFile } from "fs/promises";
-import { PRIVATE_KEY } from "../env";
-import bs58 from "bs58";
+import { UMI, UMI_SIGNER_KEYPAIR } from "../config";
 
 // Create a devnet connection
-const umi = createUmi("https://api.devnet.solana.com");
-const bundlrUploader = createBundlrUploader(umi);
-let keypair = umi.eddsa.createKeypairFromSecretKey(bs58.decode(PRIVATE_KEY));
-const signer = createSignerFromKeypair(umi, keypair);
-
-umi.use(signerIdentity(signer));
+const bundlrUploader = createBundlrUploader(UMI);
+UMI.use(signerIdentity(UMI_SIGNER_KEYPAIR));
 
 (async () => {
   try {

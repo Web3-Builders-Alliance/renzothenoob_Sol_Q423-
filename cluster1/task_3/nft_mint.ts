@@ -1,6 +1,4 @@
-import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
 import {
-  createSignerFromKeypair,
   signerIdentity,
   generateSigner,
   percentAmount,
@@ -9,29 +7,23 @@ import {
   createNft,
   mplTokenMetadata,
 } from "@metaplex-foundation/mpl-token-metadata";
-import { PRIVATE_KEY } from "../env";
 import bs58 from "bs58";
+import { UMI, UMI_SIGNER_KEYPAIR } from "../config";
 
-const RPC_ENDPOINT = "https://api.devnet.solana.com";
-const umi = createUmi(RPC_ENDPOINT);
+UMI.use(signerIdentity(UMI_SIGNER_KEYPAIR));
+UMI.use(mplTokenMetadata());
 
-let keypair = umi.eddsa.createKeypairFromSecretKey(bs58.decode(PRIVATE_KEY));
-
-const myKeypairSigner = createSignerFromKeypair(umi, keypair);
-umi.use(signerIdentity(myKeypairSigner));
-umi.use(mplTokenMetadata());
-
-const mint = generateSigner(umi);
+const mint = generateSigner(UMI);
 
 (async () => {
-  let tx = await createNft(umi, {
+  let tx = await createNft(UMI, {
     mint,
     name: "RUGGING PULL",
     uri: "https://arweave.net/aL1UQLXkrDpoBCreOTwg0XHqZrBaC_94w1CLjlyzLbE",
     sellerFeeBasisPoints: percentAmount(20),
     symbol: "RUGPULL",
   });
-  let result = await tx.sendAndConfirm(umi);
+  let result = await tx.sendAndConfirm(UMI);
   const signature = bs58.encode(result.signature);
 
   console.log(
