@@ -3,7 +3,6 @@ import { createBundlrUploader } from "@metaplex-foundation/umi-uploader-bundlr";
 import { readFile } from "fs/promises";
 import { UMI, UMI_SIGNER_KEYPAIR } from "../config";
 
-// Create a devnet connection
 const bundlrUploader = createBundlrUploader(UMI);
 UMI.use(signerIdentity(UMI_SIGNER_KEYPAIR));
 
