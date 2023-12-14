@@ -10,8 +10,9 @@ import { CLUSTER, PRIVATE_KEY } from "../env";
 import base58 from "bs58";
 import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
 import { Umi, createSignerFromKeypair } from "@metaplex-foundation/umi";
+import { AnchorProvider, Wallet } from "@coral-xyz/anchor";
 
-const COMMITMENT: Commitment = "finalized";
+export const COMMITMENT: Commitment = "finalized";
 
 export const CLUSTER_API_URL: string = clusterApiUrl(CLUSTER as Cluster);
 
@@ -33,4 +34,12 @@ export const UMI_SIGNER_KEYPAIR = createSignerFromKeypair(UMI, UMI_KEYPAIR);
 
 export const TOKEN_METADATA_PROGRAM_ID = new PublicKey(
   "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+);
+
+export const ANCHOR_PROVIDER: AnchorProvider = new AnchorProvider(
+  CONNECTION,
+  new Wallet(WBA_KEYPAIR),
+  {
+    commitment: COMMITMENT,
+  }
 );
